@@ -1,0 +1,224 @@
+{
+  "results": [
+    {
+      "scenario": "proxy create/destroy",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 3000,
+      "seconds": 2.607571873000097,
+      "connects": 12000,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy create/destroy",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 3000,
+      "seconds": 0.4179151969999566,
+      "connects": 0,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy create+call+destroy",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 3000,
+      "seconds": 3.2763684700000795,
+      "connects": 15000,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy create+call+destroy",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 3000,
+      "seconds": 0.5723743500000182,
+      "connects": 0,
+      "time_wait": null
+    },
+    {
+      "scenario": "iterator proxy (#PROXY reply)",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 3000,
+      "seconds": 2.0863465319998795,
+      "connects": 9005,
+      "time_wait": null
+    },
+    {
+      "scenario": "iterator proxy (#PROXY reply)",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 3000,
+      "seconds": 0.4280329129999245,
+      "connects": 0,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy method call (data plane)",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 30000,
+      "seconds": 0.6655987520000508,
+      "connects": 5,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy method call (data plane)",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 30000,
+      "seconds": 0.6657412330000625,
+      "connects": 0,
+      "time_wait": null
+    },
+    {
+      "scenario": "8 threads create/destroy",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 3000,
+      "seconds": 2.059042669999826,
+      "connects": 12000,
+      "time_wait": null
+    },
+    {
+      "scenario": "8 threads create/destroy",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 3000,
+      "seconds": 0.48794812699998147,
+      "connects": 4,
+      "time_wait": null
+    },
+    {
+      "scenario": "multiprocess x4 create/destroy",
+      "family": "unix",
+      "kind": "stock",
+      "ops": 3000,
+      "seconds": 2.125324902000102,
+      "connects": 12024,
+      "time_wait": null
+    },
+    {
+      "scenario": "multiprocess x4 create/destroy",
+      "family": "unix",
+      "kind": "pooled",
+      "ops": 3000,
+      "seconds": 0.2714116039999226,
+      "connects": 4,
+      "time_wait": null
+    },
+    {
+      "scenario": "proxy create/destroy",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 150,
+      "seconds": 26.41977914799986,
+      "connects": 600,
+      "time_wait": 640
+    },
+    {
+      "scenario": "proxy create/destroy",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 150,
+      "seconds": 0.023638565000055678,
+      "connects": 0,
+      "time_wait": 0
+    },
+    {
+      "scenario": "proxy create+call+destroy",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 150,
+      "seconds": 33.027709606999906,
+      "connects": 750,
+      "time_wait": 769
+    },
+    {
+      "scenario": "proxy create+call+destroy",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 150,
+      "seconds": 0.03151623200005815,
+      "connects": 0,
+      "time_wait": 0
+    },
+    {
+      "scenario": "iterator proxy (#PROXY reply)",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 150,
+      "seconds": 20.0356998069999,
+      "connects": 455,
+      "time_wait": 490
+    },
+    {
+      "scenario": "iterator proxy (#PROXY reply)",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 150,
+      "seconds": 0.023672266000176023,
+      "connects": 0,
+      "time_wait": 0
+    },
+    {
+      "scenario": "proxy method call (data plane)",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 30000,
+      "seconds": 0.9719208599999547,
+      "connects": 5,
+      "time_wait": 10
+    },
+    {
+      "scenario": "proxy method call (data plane)",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 30000,
+      "seconds": 0.7523608449998846,
+      "connects": 0,
+      "time_wait": 0
+    },
+    {
+      "scenario": "8 threads create/destroy",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 150,
+      "seconds": 3.279910876000031,
+      "connects": 576,
+      "time_wait": 610
+    },
+    {
+      "scenario": "8 threads create/destroy",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 150,
+      "seconds": 0.05779380699982539,
+      "connects": 4,
+      "time_wait": 8
+    },
+    {
+      "scenario": "multiprocess x4 create/destroy",
+      "family": "tcp",
+      "kind": "stock",
+      "ops": 150,
+      "seconds": 6.687750343999824,
+      "connects": 616,
+      "time_wait": 672
+    },
+    {
+      "scenario": "multiprocess x4 create/destroy",
+      "family": "tcp",
+      "kind": "pooled",
+      "ops": 150,
+      "seconds": 0.015447568000126921,
+      "connects": 4,
+      "time_wait": 8
+    }
+  ],
+  "micro": {
+    "dial_auth_request_us": 220.73203766664543,
+    "reused_request_us": 23.249527333367347
+  }
+}

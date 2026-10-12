@@ -1,0 +1,48 @@
+unix stock  proxy create/destroy                   869.2 us/op connects=12000
+unix pooled proxy create/destroy                   139.3 us/op connects=0
+unix stock  proxy create+call+destroy             1092.1 us/op connects=15000
+unix pooled proxy create+call+destroy              190.8 us/op connects=0
+unix stock  iterator proxy (#PROXY reply)          695.4 us/op connects=9005
+unix pooled iterator proxy (#PROXY reply)          142.7 us/op connects=0
+unix stock  proxy method call (data plane)          22.2 us/op connects=5
+unix pooled proxy method call (data plane)          22.2 us/op connects=0
+unix stock  8 threads create/destroy               686.3 us/op connects=12000
+unix pooled 8 threads create/destroy               162.6 us/op connects=4
+unix stock  multiprocess x4 create/destroy         708.4 us/op connects=12024
+unix pooled multiprocess x4 create/destroy          90.5 us/op connects=4
+tcp  stock  proxy create/destroy                176131.9 us/op connects=600
+tcp  pooled proxy create/destroy                   157.6 us/op connects=0
+tcp  stock  proxy create+call+destroy           220184.7 us/op connects=750
+tcp  pooled proxy create+call+destroy              210.1 us/op connects=0
+tcp  stock  iterator proxy (#PROXY reply)       133571.3 us/op connects=455
+tcp  pooled iterator proxy (#PROXY reply)          157.8 us/op connects=0
+tcp  stock  proxy method call (data plane)          32.4 us/op connects=5
+tcp  pooled proxy method call (data plane)          25.1 us/op connects=0
+tcp  stock  8 threads create/destroy             21866.1 us/op connects=576
+tcp  pooled 8 threads create/destroy               385.3 us/op connects=4
+tcp  stock  multiprocess x4 create/destroy       44585.0 us/op connects=616
+tcp  pooled multiprocess x4 create/destroy         103.0 us/op connects=4
+
+### AF_UNIX (default)
+
+| scenario | stock us/op | pooled us/op | speedup | stock connects | pooled connects |
+|---|---|---|---|---|---|
+| proxy create/destroy | 869 | 139 | 6.2x | 12000 | 0 |
+| proxy create+call+destroy | 1092 | 191 | 5.7x | 15000 | 0 |
+| iterator proxy (#PROXY reply) | 695 | 143 | 4.9x | 9005 | 0 |
+| proxy method call (data plane) | 22 | 22 | 1.0x | 5 | 0 |
+| 8 threads create/destroy | 686 | 163 | 4.2x | 12000 | 4 |
+| multiprocess x4 create/destroy | 708 | 90 | 7.8x | 12024 | 4 |
+
+### AF_INET (TCP loopback)
+
+| scenario | stock us/op | pooled us/op | speedup | stock connects | pooled connects | stock TIME_WAIT | pooled TIME_WAIT |
+|---|---|---|---|---|---|---|---|
+| proxy create/destroy | 176132 | 158 | 1117.7x | 600 | 0 | 640 | 0 |
+| proxy create+call+destroy | 220185 | 210 | 1048.0x | 750 | 0 | 769 | 0 |
+| iterator proxy (#PROXY reply) | 133571 | 158 | 846.4x | 455 | 0 | 490 | 0 |
+| proxy method call (data plane) | 32 | 25 | 1.3x | 5 | 0 | 10 | 0 |
+| 8 threads create/destroy | 21866 | 385 | 56.8x | 576 | 4 | 610 | 8 |
+| multiprocess x4 create/destroy | 44585 | 103 | 432.9x | 616 | 4 | 672 | 8 |
+
+Micro: authenticated dial + 1 request = 221 us; 1 request on a reused connection = 23 us.
