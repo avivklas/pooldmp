@@ -34,6 +34,24 @@ So:
   create/destroy from 176 ms to 1.1 ms (`scripts/probe_tcp_nagle.py`). Each
   dial also leaves a `TIME_WAIT` socket (see table below).
 
+### What this means for a `DictProxy`
+Stock dials per operation (AF_UNIX, `scripts/probe_dictproxy.py`):
+| Operation | Stock dials |
+|---|---|
+| `d = m.dict()` | 3 (`create`, `incref`, internal `decref`) |
+| first method call on `d` from a thread | 1 (`accept_connection`) |
+| `d[k]`, `d[k] = v`, `len(d)`, `d.copy()`, `k in d`, `d.keys()` | 0 |
+| `iter(d)` / `for k in d` (returns an Iterator proxy) | 2, plus 1 when freed |
+| `del d` | 1 (`decref`) |
+| pass `d` to a pool task (unpickle, first call, free) | 3 per task |
+Each dial also costs an auth handshake and a server thread (about 220 us on
+AF_UNIX, about 44 ms on TCP). A long-lived proxy used heavily is fine on
+stock; the cost is in creating, passing per task, iterating and destroying
+proxies. Cheap fixes without this package: pass the proxy once via a `Pool`
+initializer, and prefer `d.items()`/`d.copy()` over `for k in d`. With the
+pool these steady-state dials drop to 0 (the first control and data
+connections are one-time).
+
 ## 2. Design
 
 ```
